@@ -12,14 +12,16 @@
             <div class="w-4/5 my-2">
                 <div class="my-3 w-full flex flex-col">
                     <label>ID</label>
-                    <input class=" border-b border-gray-300 focus:border-red-600 text-black p-1 w-full" type="text" placeholder="홍해인의 정승아 카톡명" />
+                    <input v-model="email" class=" border-b border-gray-300 focus:border-red-600 text-black p-1 w-full" type="text" placeholder="홍해인의 지메일" />
                 </div>
                 <div class="my-4 w-full flex flex-col">
                     <label for="">Password</label>
-                    <input class="border-b border-gray-300 focus:border-red-600 p-1 w-full text-black" type="password" placeholder="홍해인의 생년월일 8 숫자" />
+                    <input v-model="password" class="border-b border-gray-300 focus:border-red-600 p-1 w-full text-black" type="password" placeholder="홍해인의 생년월일 8 숫자" />
                 </div>
                 <div class="my-3 mx-3 text-center ">
-                    <button type="submit" class="p-1 cursor-pointer w-1/4 hover:bg-yellow-500 hover:text-white rounded-lg shadow-md border text-sm">Login</button>
+                    <button v-if="!isLoading" type="submit" class="p-1 cursor-pointer w-1/4 hover:bg-yellow-500 hover:text-white rounded-lg shadow-md border text-sm">Login</button>
+                    <button v-else type="submit" class="p-1 cursor-pointer w-1/4 hover:bg-yellow-500 hover:text-white rounded-lg shadow-md border text-sm">조금만 기달려</button>
+
                 </div>
             </div>
         </form>
@@ -30,7 +32,29 @@
 </template>
 
 <script>
+import firebase from '../util/firebase'
 export default {
+    data() {
+        return {
+            email: '',
+            password: '',
+            isLoading: false,
+        }
+    },
+
+    methods: {
+        submit() {
+            this.isLoading = true;
+            firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(() => {
+                this.email = '';
+                this.password = '';
+                this.isLoading = false;
+                console.log('로그인 성공')
+            }).catch(e => {
+                console.log(e)
+            })
+        }
+    }
 
 }
 </script>
