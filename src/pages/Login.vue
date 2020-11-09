@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import router from '../router.js'
 import firebase from '../util/firebase'
 export default {
     data() {
@@ -50,6 +51,7 @@ export default {
                 this.password = '';
                 this.isLoading = false;
                 console.log('로그인 성공')
+                router.replace('/letter')
             }).catch(e => {
                 console.log(e)
             })
