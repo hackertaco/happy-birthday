@@ -14,11 +14,9 @@ export default {
     mounted() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                console.log(user);
                 this.isLoggedIn = true;
                 this.authUser = user;
             } else {
-                console.log('no user')
                 this.isLoggedIn = false;
                 this.authUser = {}
             }

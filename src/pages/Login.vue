@@ -50,7 +50,6 @@ export default {
                 this.email = '';
                 this.password = '';
                 this.isLoading = false;
-                console.log('로그인 성공')
                 router.replace('/letter')
             }).catch(e => {
                 console.log(e)
