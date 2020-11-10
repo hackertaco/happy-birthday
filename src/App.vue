@@ -1,13 +1,28 @@
 <template>
-<Login />
+<router-view />
 </template>
 
 <script>
-import Login from './pages/Login';
-
+import firebase from './util/firebase'
 export default {
-    components: {
-        Login
+    data() {
+        return {
+            isLoggedIn: false,
+            authUser: {}
+        }
+    },
+    mounted() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                console.log(user);
+                this.isLoggedIn = true;
+                this.authUser = user;
+            } else {
+                console.log('no user')
+                this.isLoggedIn = false;
+                this.authUser = {}
+            }
+        })
     }
 }
 </script>
