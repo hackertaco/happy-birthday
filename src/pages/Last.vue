@@ -1,6 +1,6 @@
 <template>
 <div style="background-color: #0e101b;" class=" w-screen h-screen text-white flex items-center justify-center flex-col">
-    <img src="@/assets/lie.jpg" alt="">
+    <img src="@/assets/img/lie.jpg" alt="">
     <div class="logo text-center">
         <span>애</span>
         <span>플</span>

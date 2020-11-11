@@ -1,6 +1,6 @@
 <template>
 <div class="tracking-tight w-screen h-screen bg-red-700 m-auto fixed" style="font-family:SpaceMono">
-    <img class="w-full h-4" src="../assets/cautionLine.jpg" />
+    <img class="w-full h-4" src="../assets/img/cautionLine.jpg" />
     <div class="text-white m-auto justify-center h-full flex items-center flex-col ">
         <div class=" m-auto flex justify-center flex-col items-center align-middle text-center w-full" style="position: relative;bottom: 3rem">
             <svg class="w-1/12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
