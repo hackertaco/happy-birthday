@@ -17,11 +17,13 @@ block content
       #messages li:nth-child(odd) { background: #eee; }
   
         
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.slim.js')
+    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.slim.js')
+    script(src='/socket.io/socket.io.js')
+
     script(src='http://code.jquery.com/jquery-1.11.1.js')
     script.
         
-      var socket = io.connect('http://localhost:3000');
+      var socket = io();
         
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
