@@ -4,11 +4,25 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var chatsRouter = require('./routes/chat');
 var app = express();
 
+app.io = require('socket.io');
+app.io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.broadcast.emit('hi');
+  socket.on('disconnect', ()=>{
+    console.log('user disconnected')
+  })
+
+  socket.on('chatMessage', (msg) => {
+    console.log('message:' + msg);
+    app.io.emit('chatMessage', msg)
+  })
+})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
