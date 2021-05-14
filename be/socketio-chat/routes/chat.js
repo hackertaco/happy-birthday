@@ -1,8 +1,12 @@
-const express = require('express');
-const router = express.Router();
-
-router.get('/', (req, res, next) => {
-    res.render('chat', {title: 'chat tutorial'})
-})
-
+var express = require('express');
+var router = express.Router();
+ 
+/* GET chat listing. */
+router.get('/', function(req, res, next) {
+    res.render('chat', { title: 'chat tutorial' }); // View 에 chat.jade 를 추가해야됨
+ 
+});
+  
 module.exports = router;
+
+
